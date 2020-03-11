@@ -1,62 +1,60 @@
+## Desafío de fin de semana: Lista de tareas de SQL
 
-## Weekend Challenge: SQL To-Do List
+Hola Primers!
 
-Hello Primers! 
+¡Bienvenido a tu desafío de fin de semana!
 
-Welcome to your weekend challenge!
+Desarrollo Web completa es bastante impresionante, ¿eh? La idea de que se puede hacer una aplicación con arquitectura completa en tan poco tiempo es bastante increíble. Este fin de semana se trata de mostrarnos que tiene un control sobre cada una de las diferentes partes de la Web completa.
 
-Full stack is pretty awesome, huh? The idea that you are able to spin up a full application architecture in such a short time is pretty incredible. This weekend is all about showing us that you have a handle on each of the different parts of the full stack. 
+## La aplicación de tareas pendientes
 
-## The To-Do App
+Va a crear una aplicación de tareas pendientes -- se llama 'TO-DO' en ingles. Este tipo de aplicación es muy común de abordar cuando se aprende un nuevo idioma, lo que hace que sea extremadamente valioso para trabajar a través de por primera vez. Es muy probable que en algún momento de su carrera vuelva a abordar esto mientras aprende otro idioma.
 
-You are going to create a 'TO DO' application. This type of application is very common to tackle when learning a new language, which makes it extremely valuable to work through for the first time. Chances are good that at some point in your career you will tackle this again while learning another language.
+**Estos son los componentes específicos para el desafío:**
 
-**Here are the specific components for the challenge:**
+* Crear una experiencia de Front-End que permite a un usuario crear una tarea.
+* Cuando se crea la tarea, debe almacenarse dentro de una base de datos (SQL)
+* Cada vez que se crea una tarea, el Front-End debe actualizarse para mostrar todas las tareas que deben completarse.
+* Cada Tarea debe tener una opción para "Completar" o "Eliminar".
+* Cuando una tarea está completa, su representación visual debe cambiar en la Front-End. Por ejemplo, el fondo del contenedor de tareas podría cambiar de gris a verde. La opción completa debe estar "desactivada". Cada uno de estos se logra en CSS, pero deberá engancharse a la lógica para saber si la tarea está completa o no.
+* Si una tarea está completa o no también debe almacenarse en la base de datos.
+* Eliminación de una tarea debe eliminar tanto desde Front-End así como la base de datos.
 
-* Create a front end experience that allows a user to create a Task.
-* When the Task is created, it should be stored inside of a database (SQL)
-* Whenever a Task is created the front end should refresh to show all tasks that need to be completed.
-* Each Task should have an option to 'Complete' or 'Delete'.
-* When a Task is complete, its visual representation should change on the front end. For example, the background of the task container could change from gray to green. The complete option should be  'checked off'. Each of these are accomplished in CSS, but will need to hook into logic to know whether or not the task is complete.
-* Whether or not a Task is complete should also be stored in the database.
-* Deleting a Task should remove it both from the front end as well as the Database.
+### Estilizar
 
-### Styling
+Utilice el estilo CSS para cambiar la estética de la página más allá del aspecto HTML:
+- color de fondo de la página
+- familia del tipo de letra y tamaño
+- color de texto y o color de fondo de las tareas * para mostrar si se han completado o no*
 
-Use CSS styling to move the aesthetic of the page beyond the vanilla HTML look:
-  - background color of the page
-  - font family and size
-  - text color & or background color of tasks *to show whether or not they have been completed*
+### Enfoque
 
-### Approach
+Le recomendamos que dedique algún tiempo a pensar en cómo abordar este problema. Piense en toda la lógica que se necesitará antes de escribir cualquier código. iTómese su tiempo, relájese, recuerde que el síndrome de impostor es real y que es capaz de sobresalir en esto!
 
-We would recommend you spend some time thinking about how to approach this problem. Think through all the logic that will be needed prior to writing any code. Take your time, relax, remember that impostor syndrome is real, and that you are capable of knocking this out of the park!
+### Crear una base de datos
 
-### Create a Database
+Asegúrese de crear una nueva base de datos a través de Postico. Utilice el nombre `weekend-to-do-app`. Deberá usar este nombre en la configuración de conexión de base de datos en su servidor.
 
-Be sure to create a new database through Postico. Use the name `weekend-to-do-app`. You will need to use this name in your database connection configuration on your server.
+### Estructura de la base de datos
 
-### Database Structure
+Por favor incluya una archivo se llama `database.sql` en su repositorio que incluye todas sus consultas `CREATE TABLE` . Esto es para que podamos volver a crear su base de datos mientras prueba su aplicación.
 
-Please include a `database.sql` text file in your repo that includes all of your `CREATE TABLE` queries. This is so we can re-create your database while testing your app.
+## Objetivos de estiramiento
 
-## Stretch Goals
+Para cada uno de tus objetivos 'stretch', estarás practicando la ramificación de git. Consulte las notas de ramificación para obtener un recordatorio sobre los comandos. Cada rama se fusionará en master usando `--no-ff`. Esto nos permitirá ver que ha ramificado su función cuando entrega su código.
 
-For each of your strech goals, you will be practicing git branching. Please refer to the branching notes for a reminder on commands. Each branch will be merged into master using `--no-ff`. This will allow us to see that you branched your feature when you turn in your code.
+- `feature-styling-bootstrap`
 
-- `feature-styling-bootstrap` 
-
-    - [ ]  Add Bootstrap to the front end and style it up!
-      -  Buttons -- make the creation buttons and completion buttons green and the delete red.
-      -  Inputs -- make your text inputs styled in the bootstrap way
-      -  Responsive -- make your app responsive to different screen sizes -- check out the [Layout](https://getbootstrap.com/docs/4.1/layout/overview/) section
+- [ ] Añadir Bootstrap a la Front-End y el estilo para arriba!
+- Botones: haga que los botones de creación y los botones de finalización sean verdes y el rojo de eliminación.
+- Entradas: haga que sus entradas de texto estén diseñadas de la manera de arranque
+- Responsive: haga que su aplicación responda a diferentes tamaños de pantalla: consulte la sección [Diseño] (https://getbootstrap.com/docs/4.1/layout/overview/)
 
 - `feature-confirm-delete`
 
-    - [ ]  In whatever fashion you would like, create an 'are you sure: yes / no' option when deleting a task.
-        - Some styled options are [Bootstrap Modal](https://getbootstrap.com/docs/4.0/components/modal/) or [Sweet Alerts](https://sweetalert.js.org/guides/).
+- [ ] De cualquier manera que desee, cree una opción '¿está seguro: sí / no' al eliminar una tarea.
+- Algunas opciones de estilo son [Bootstrap Modal] (https://getbootstrap.com/docs/4.0/components/modal/) o [Sweet Alerts] (https://sweetalert.js.org/guides/).
 
-- `feature-ordering-task-query` 
+- `feature-ordering-task-query`
 
-    - [ ]  Research [Query Params](https://expressjs.com/en/api.html#req.query) to have the request reverse the order of the returned todos. 
-
+- [ ] Research [Query Params](https://expressjs.com/en/api.html#req.query) para que la solicitud invierta el orden de los todos devueltos.
