@@ -2,7 +2,7 @@
 
 Hola Primers!
 
-¡Bienvenido a tu desafío de fin de semana!
+¡Bienvenido a su desafío de fin de semana!
 
 Desarrollo Web completa es bastante impresionante, ¿eh? La idea de que se puede hacer una aplicación con arquitectura completa en tan poco tiempo es bastante increíble. Este fin de semana se trata de mostrarnos que tiene un control sobre cada una de las diferentes partes de la Web completa.
 
