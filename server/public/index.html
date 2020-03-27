@@ -9,6 +9,35 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <h1>See Console</h1>
+    <header>
+        <h1>To Do</h1>
+    </header>
+    <section>
+        <h2>Add A Task</h2>
+        <form id="inputForm">
+            <label>Task</label><input type = "text" id="name-in" value="" placeholder="Task" />
+            <br />
+            <label>Description</label><input type = "text" id="description-in" value="" placeholder="Description" />
+            <br />
+            <label>Status</label><input type = "text" id="status-in" value="" placeholder="Status" />
+            <br />
+            <button type="button" id="add-btn">Add Task</button>
+        </form>
+    </section>
+    <section>
+        <h3>Current List:</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Task Description</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="taskList">
+                <!-- Program to fill in -->
+            </tbody>
+        </table>
+    </section>
 </body>
 </html>

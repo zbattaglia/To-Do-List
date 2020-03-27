@@ -1,11 +1,11 @@
 
-## Weekend Challenge: SQL To-Do List
+<!-- ## Weekend Challenge: SQL To-Do List
 
 Hello Primers! 
 
 Welcome to your weekend challenge!
 
-Full stack is pretty awesome, huh? The idea that you are able to spin up a full application architecture in such a short time is pretty incredible. This weekend is all about showing us that you have a handle on each of the different parts of the full stack. 
+Full stack is pretty awesome, huh? The idea that you are able to spin up a full application architecture in such a short time is pretty incredible. This weekend is all about showing us that you have a handle on each of the different parts of the full stack.  -->
 
 ## The To-Do App
 
@@ -13,8 +13,8 @@ You are going to create a 'TO DO' application. This type of application is very 
 
 **Here are the specific components for the challenge:**
 
-* Create a front end experience that allows a user to create a Task.
-* When the Task is created, it should be stored inside of a database (SQL)
+* Create a front end experience that allows a user to create a Task. -->
+* When the Task is created, it should be stored inside of a database (SQL) -->
 * Whenever a Task is created the front end should refresh to show all tasks that need to be completed.
 * Each Task should have an option to 'Complete' or 'Delete'.
 * When a Task is complete, its visual representation should change on the front end. For example, the background of the task container could change from gray to green. The complete option should be  'checked off'. Each of these are accomplished in CSS, but will need to hook into logic to know whether or not the task is complete.
