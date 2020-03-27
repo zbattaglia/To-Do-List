@@ -13,7 +13,7 @@ function getTasks() {
     // ajax request to the server
     $.ajax({
         'type': 'GET',
-        'url': 'tasks'
+        'url': '/tasks'
     })
     .then( ( response ) => {
         console.log( 'got respnose from server' );
@@ -49,6 +49,6 @@ function renderTasks( toDoList ) {
         $tr.append( `<td>${task.description}</td>`);
         $tr.append( `<td>${task.status}</td>`);
         $( '#taskList' ).append( $tr );
-    }
+    };
 
 }; //End renderTask
