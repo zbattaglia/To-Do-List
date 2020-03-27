@@ -39,15 +39,11 @@ function renderTasks( toDoList ) {
     //for each task create a new row, append each property as a new td,
     // append the row to taskList
     for( let task of toDoList ) {
-        console.log('name', task.name);
-        console.log('descriptio', task.description);
-        console.log('status', task.status);
-
         let $tr = $( '<tr></tr>' );
         $tr.data( 'task', task );
-        $tr.append( `<td>${task.name}</td>`);
-        $tr.append( `<td>${task.description}</td>`);
-        $tr.append( `<td>${task.status}</td>`);
+        $tr.append( `<td>${task.Task}</td>`);
+        $tr.append( `<td>${task.Description}</td>`);
+        $tr.append( `<td>${task.Status}</td>`);
         $( '#taskList' ).append( $tr );
     };
 
