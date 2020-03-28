@@ -23,8 +23,26 @@ function clickListeners() {
 }; //end clickListeners
 
 // function to delete task
-function deleteTask() {
+function deleteTask( event ) {
     console.log( 'Deleting task:', $(this).data().id );
+    event.preventDefault();
+
+    // get id of task from data of delete button clicked
+    let id = $(this).data().id;
+
+    // ajax DELETE request to server with id encoded in url
+    $.ajax({
+        type: 'DELETE',
+        url: `/tasks/${id}`
+    })
+    .then( (result) => {
+        console.log( 'Successfully deleted task from database', result );
+        // call getTasks to update DOM
+        getTasks();
+    })
+    .catch( (error) => {
+        
+    })
 
 }; // end deleteTask
 
@@ -75,7 +93,29 @@ function getTasks() {
 function saveTask( task ) {
     console.log( 'Sending task to server:', task );
 
-}; //End task
+    // ajax call to POST new task
+    $.ajax({
+        type: 'POST',
+        url: '/tasks',
+        data: task
+    })
+    .then( (response) => {
+        console.log( 'Got response from server:', response );
+        // call getTasks to refresh DOM with up to date list from database
+        getTasks();
+
+        // on successful add clear input fields
+        $( '#name-in' ).val(''),
+        $( '#description-in' ).val(''),
+        $( '#status-in' ).val('')
+
+    })
+    .catch( (error) => {
+        console.log( 'Error posting to server:', error );
+        alert( `Couldn't add task. See console for details` );
+    });
+
+}; //End add task
 
 // display tasks on the DOM.
 // Should be called after a succesful GET.

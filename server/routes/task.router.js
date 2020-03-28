@@ -2,6 +2,7 @@ const express = require( 'express' );
 const taskRouter = express.Router();
 const pool = require( '../modules/pool' );
 
+// GET tasks from database
 taskRouter.get( '/', ( req, res ) => {
     console.log( 'In /tasks GET' );
 
@@ -18,5 +19,24 @@ taskRouter.get( '/', ( req, res ) => {
         });
     
 }); // end GET
+
+// POST new task to database
+taskRouter.post( '/', (req, res) => {
+    // extract new task from req
+    let newTask = req.body;
+    console.log( 'Adding new task', newTask );
+
+    // create query to insert task into table on database
+    let queryText = `INSERT INTO "toDoList" ( "Task", "Description", "Status" )
+        VALUES ($1, $2, $3);`;
+    pool.query( queryText, [newTask.name, newTask.description, newTask.status] )
+        .then( (result) => {
+            res.sendStatus( 201 );
+        })
+        .catch( (error) => {
+            console.log( 'Error adding task:', error );
+            res.sendStatus( 500 );
+        });
+}); // end POST
 
 module.exports = taskRouter;
