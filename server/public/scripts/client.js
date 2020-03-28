@@ -48,7 +48,16 @@ function deleteTask( event ) {
 
 // function to change task status to complete
 function completeTask() {
-    console.log( 'Completing task:', $(this).data().id );
+    // extract task id from data in button clicked
+    let taskId = $(this).data().id;
+    console.log( 'Completing task:', taskId );
+
+    // // ajax PUT request to update status of selected task
+    // $.ajax({
+    //     type: 'PUT',
+    //     url: `/tasks/${taskId}`,
+
+    // })
 
 }; //end completetask
 
@@ -134,7 +143,7 @@ function renderTasks( toDoList ) {
         $tr.data( 'task', task );
         $tr.append( `<td>${task.Task}</td>`);
         $tr.append( `<td>${task.Description}</td>`);
-        $tr.append( `<td>${task.Status}</td>`);
+        $tr.append( `<td>${convertBoolean( task.Status )}</td>`);
         $tr.append( `<td><button data-id="${task.id}" class="complete-btn">Complete</button></td>`);
         $tr.append( `<td><button data-id="${task.id}" class="delete-btn">Delete</button></td>`);
         
@@ -142,3 +151,13 @@ function renderTasks( toDoList ) {
     };
 
 }; //End renderTask
+
+// function to convert status boolean to yes or no on DOM
+function convertBoolean( statusBoolean ){
+    if ( statusBoolean === true ) {
+        return 'Complete';
+    }
+    else {
+        return 'Not Complete';
+    }
+}; // end convertBoolean
