@@ -154,8 +154,13 @@ function renderTasks( toDoList ) {
         $tr.append( `<td>${task.Task}</td>`);
         $tr.append( `<td>${task.Description}</td>`);
         $tr.append( `<td>${convertBoolean( task.Status )}</td>`);
-        $tr.append( `<td><button data-id="${task.id}" class="complete-btn">Complete</button></td>`);
-        $tr.append( `<td><button data-id="${task.id}" data-status="${task.status}" class="delete-btn">Delete</button></td>`);
+        if( !task.Status ){
+            $tr.append( `<td><button data-id="${task.id}" class="complete-btn btn-success">Complete</button></td>`);
+        }
+        else{
+            $tr.append( `<td></td>`);
+        }
+        $tr.append( `<td><button data-id="${task.id}" data-status="${task.status}" class="delete-btn btn-outline-danger">Delete</button></td>`);
 
         $( '#taskList' ).append( $tr );
 
@@ -179,9 +184,11 @@ function convertBoolean( statusBoolean ){
 function styleTable() {
     // loop over table on DOM and apply complete status if complete
     $( '#taskList tr' ).each( function() {
-        console.log( 'Row =', $(this).data().task.Status );
         if( $(this).data().task.Status === true ){
             $(this).addClass( 'complete' );
+        }
+        else {
+            $(this).removeClass( 'complete' )
         }
     })
 };//end styleTable

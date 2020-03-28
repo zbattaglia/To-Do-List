@@ -1,3 +1,40 @@
 .complete {
-    background-color: green;
+    background-color: #90EE90;
+}
+
+tbody {
+    background-color: #F0FFFF;
+}
+
+thead {
+    background-color: #2F4F4F;
+    color: white;
+}
+
+header {
+    text-align: center;
+    color: white
+}
+
+#addTask {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+body {
+    background-image: linear-gradient( #659dbd, #fbeec1 );
+}
+
+input {
+    text-align: center;
+}
+
+tbody tr {
+border-bottom: .1rem dotted;
+background-color: #f5f5f5;
+border-color: #ffaa9f;
+}
+
+#addTask {
+    color: white;
 }
