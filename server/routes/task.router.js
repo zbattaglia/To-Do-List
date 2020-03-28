@@ -7,8 +7,8 @@ taskRouter.get( '/', ( req, res ) => {
     console.log( 'In /tasks GET' );
 
     // Make a sql SELECT on the database
-    let sqlText = 'SELECT * FROM "toDoList" ORDER BY "id";'
-    pool.query( sqlText )
+    let queryText = 'SELECT * FROM "toDoList" ORDER BY "id";'
+    pool.query( queryText )
         .then( (result) => {
             console.log( 'Got a result:', result );
             res.send( result.rows )
@@ -38,5 +38,24 @@ taskRouter.post( '/', (req, res) => {
             res.sendStatus( 500 );
         });
 }); // end POST
+
+// DELETE task from database
+taskRouter.delete( '/:id', (req, res) => {
+    // extract id from req.params
+    let taskId = req.params.id; 
+    console.log( 'Deleting task with id', taskId );
+
+    // create query to delete task from database
+    let queryText = `DELETE FROM "toDoList" WHERE "id" = $1;`;
+    pool.query( queryText, [taskId] )
+        .then( (result) => {
+            console.log( `Deleted task from database`);
+            res.sendStatus( 200 );
+        })
+        .catch( (error) => {
+            console.log( 'Error deleting task from database.', error );
+            res.sendStatus( 500 );
+        });
+}) // end DELETE
 
 module.exports = taskRouter;
