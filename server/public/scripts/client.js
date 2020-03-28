@@ -158,7 +158,7 @@ function renderTasks( toDoList ) {
             $tr.append( `<td><button data-id="${task.id}" class="complete-btn btn-success">Complete</button></td>`);
         }
         else{
-            $tr.append( `<td></td>`);
+            $tr.append( `<td class="check"></td>`);
         }
         $tr.append( `<td><button data-id="${task.id}" data-status="${task.status}" class="delete-btn btn-outline-danger">Delete</button></td>`);
 

@@ -4,16 +4,20 @@
 
 tbody {
     background-color: #F0FFFF;
+    font-family: 'Gotu', sans-serif;
 }
 
 thead {
     background-color: #2F4F4F;
     color: white;
+    font-family: 'Anton', sans-serif;
+    font-size: 2rem;
 }
 
 header {
     text-align: center;
-    color: white
+    color: white;
+    font-family: 'Anton', sans-serif;
 }
 
 #addTask {
@@ -37,4 +41,12 @@ border-color: #ffaa9f;
 
 #addTask {
     color: white;
+    font-family: 'Anton', sans-serif;
+}
+
+.check{
+    background: url(https://png.pngtree.com/png-vector/20190228/ourmid/pngtree-check-mark-icon-design-template-vector-isolated-png-image_711433.jpg);
+    background-size: 2rem;
+    background-repeat: no-repeat;
+    background-position: center;
 }
