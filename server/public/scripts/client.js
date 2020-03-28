@@ -52,12 +52,22 @@ function completeTask() {
     let taskId = $(this).data().id;
     console.log( 'Completing task:', taskId );
 
-    // // ajax PUT request to update status of selected task
-    // $.ajax({
-    //     type: 'PUT',
-    //     url: `/tasks/${taskId}`,
-
-    // })
+    // ajax PUT request to update status of selected task
+    // id is encoded in url and status is toggled from current state
+    $.ajax({
+        type: 'PUT',
+        url: `/tasks/${taskId}`,
+        data: { status: !status }
+    })
+    .then( (result) => {
+        console.log( 'Got response from PUT on server', response );
+        // call getTasks to update DOM
+        getTasks();
+    })
+    .catch( (error) => {
+        console.log( 'Got an error updating status on server', error );
+        alert( `Couldn't complete task. See console for details.` );
+    });
 
 }; //end completetask
 
@@ -145,7 +155,7 @@ function renderTasks( toDoList ) {
         $tr.append( `<td>${task.Description}</td>`);
         $tr.append( `<td>${convertBoolean( task.Status )}</td>`);
         $tr.append( `<td><button data-id="${task.id}" class="complete-btn">Complete</button></td>`);
-        $tr.append( `<td><button data-id="${task.id}" class="delete-btn">Delete</button></td>`);
+        $tr.append( `<td><button data-id="${task.id}" data-status="${task.status}" class="delete-btn">Delete</button></td>`);
         
         $( '#taskList' ).append( $tr );
     };
