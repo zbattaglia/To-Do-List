@@ -59,7 +59,7 @@ function completeTask() {
         url: `/tasks/${taskId}`,
         data: { status: !status }
     })
-    .then( (result) => {
+    .then( (response) => {
         console.log( 'Got response from PUT on server', response );
         // call getTasks to update DOM
         getTasks();
@@ -97,7 +97,7 @@ function getTasks() {
         'url': '/tasks'
     })
     .then( ( response ) => {
-        console.log( 'got respnose from server' );
+        console.log( 'got response from server' );
         // pass tasks to renderFunction
         renderTasks( response );
     })
@@ -149,15 +149,19 @@ function renderTasks( toDoList ) {
     // append a delete and complete button to each new item. 
     // include task id as data on each button for detection
     for( let task of toDoList ) {
-        let $tr = $( '<tr></tr>' );
+        let $tr = $( `<tr></tr>` );
         $tr.data( 'task', task );
         $tr.append( `<td>${task.Task}</td>`);
         $tr.append( `<td>${task.Description}</td>`);
         $tr.append( `<td>${convertBoolean( task.Status )}</td>`);
         $tr.append( `<td><button data-id="${task.id}" class="complete-btn">Complete</button></td>`);
         $tr.append( `<td><button data-id="${task.id}" data-status="${task.status}" class="delete-btn">Delete</button></td>`);
-        
+
         $( '#taskList' ).append( $tr );
+
+        // call function to change style based on status of task
+        styleTable();
+
     };
 
 }; //End renderTask
@@ -171,3 +175,13 @@ function convertBoolean( statusBoolean ){
         return 'Not Complete';
     }
 }; // end convertBoolean
+
+function styleTable() {
+    // loop over table on DOM and apply complete status if complete
+    $( '#taskList tr' ).each( function() {
+        console.log( 'Row =', $(this).data().task.Status );
+        if( $(this).data().task.Status === true ){
+            $(this).addClass( 'complete' );
+        }
+    })
+};//end styleTable

@@ -58,4 +58,23 @@ taskRouter.delete( '/:id', (req, res) => {
         });
 }) // end DELETE
 
+
+// PUT to update status on database
+taskRouter.put( '/:id', (req, res) => {
+    console.log( `Updating task with id ${req.params.id} to new status`, req.body.status );
+    
+    let taskId = req.params.id; //extract id from url
+    let status = req.body.status; //get new status
+    let queryText = `UPDATE "toDoList" SET "Status" = $1 WHERE "id" = $2;`;
+    pool.query( queryText, [status, taskId])
+        .then( (result) => {
+            console.log( 'Updated status on server' );
+            res.sendStatus( 200 );
+        })
+        .catch( (error) => {
+            console.log( 'Error updating status', error );
+            res.sendStatus( 500 );
+        })
+}); // end PUT
+
 module.exports = taskRouter;
