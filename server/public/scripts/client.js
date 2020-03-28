@@ -41,9 +41,9 @@ function deleteTask( event ) {
         getTasks();
     })
     .catch( (error) => {
-        
-    })
-
+        console.log( 'Error deleting task', error );
+        alert( `Couldn't delete task. See console for details.`, error );
+    });
 }; // end deleteTask
 
 // function to change task status to complete
