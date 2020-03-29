@@ -2,6 +2,9 @@ console.log( 'client.js ready' );
 
 $( document ).ready( readyNow );
 
+// global variable to store id of task to be delete until user confirmation
+let deleteTaskId = null;
+
 function readyNow() {
     console.log( 'jQuery ready' );
 
@@ -18,34 +21,35 @@ function clickListeners() {
     // function's for each button click
     $( '#add-btn' ).on( 'click', getTask );
     $( '#taskList' ).on( 'click', '.complete-btn', completeTask );
-    $( '#taskList' ).on( 'click', '.delete-btn', deleteTask );
+    $( '#taskList' ).on( 'click', '.delete-btn', handleDelete );
+    // Only calls delete task function if the modal pop-up is confirmed by user
+    $( '#myModal' ).on( 'click', '#confirm-btn', deleteTask );
 }; //end clickListeners
 
-// function to delete task
-function deleteTask( event ) {
-    console.log( 'Deleting task:', $(this).data().id );
+// function to grab id of task being selected for deletion and store it until confirmed
+function handleDelete( event ) {
     event.preventDefault();
+    deleteTaskId = $(this).data().id;
+} // end handleDelete
 
-    // get id of task from data of delete button clicked
-    let id = $(this).data().id;
+// function to delete task
+function deleteTask() {
+    console.log( 'Deleting task with id', deleteTaskId );
     // ajax DELETE request to server with id encoded in url
-    $( '#myModal' ).on( 'click', '#confirm-btn', function( event ){
-        if( $(this).text() === 'Delete' ){ 
-            $.ajax({
-                type: 'DELETE',
-                url: `/tasks/${id}`
-            })
-            .then( (result) => {
-                console.log( 'Successfully deleted task from database', result );
-                // call getTasks to update DOM
-                getTasks();
-            })
-            .catch( (error) => {
-                console.log( 'Error deleting task', error );
-                alert( `Couldn't delete task. See console for details.`, error );
-            });
-        }
+    $.ajax({
+        type: 'DELETE',
+        url: `/tasks/${deleteTaskId}`
     })
+    .then( (result) => {
+        console.log( 'Successfully deleted task from database', result );
+        // call getTasks to update DOM
+        deleteTaskId = null;
+        getTasks();
+    })
+    .catch( (error) => {
+        console.log( 'Error deleting task', error );
+        alert( `Couldn't delete task. See console for details.`, error );
+    });
 
 }; // end deleteTask
 
