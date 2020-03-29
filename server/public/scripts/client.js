@@ -51,13 +51,13 @@ function completeTask() {
     // extract task id from data in button clicked
     let taskId = $(this).data().id;
     console.log( 'Completing task:', taskId );
-
+    let currentStatus = $(this).data().Status
     // ajax PUT request to update status of selected task
     // id is encoded in url and status is toggled from current state
     $.ajax({
         type: 'PUT',
         url: `/tasks/${taskId}`,
-        data: { status: !status }
+        data: { status: !currentStatus }
     })
     .then( (response) => {
         console.log( 'Got response from PUT on server', response );
@@ -151,16 +151,21 @@ function renderTasks( toDoList ) {
     for( let task of toDoList ) {
         let $tr = $( `<tr></tr>` );
         $tr.data( 'task', task );
+        if ( !task.Status ){
+            $tr.append( `<td>${convertBoolean( task.Status )}</td>`);
+        }
+        else {
+            $tr.append( `<td class="check"></td>`);
+        }
         $tr.append( `<td>${task.Task}</td>`);
         $tr.append( `<td>${task.Description}</td>`);
-        $tr.append( `<td>${convertBoolean( task.Status )}</td>`);
         if( !task.Status ){
             $tr.append( `<td><button data-id="${task.id}" class="complete-btn btn-success">Complete</button></td>`);
         }
-        else{
-            $tr.append( `<td class="check"></td>`);
+        else {
+            $tr.append( `<td></td>`);
         }
-        $tr.append( `<td><button data-id="${task.id}" data-status="${task.status}" class="delete-btn btn-outline-danger">Delete</button></td>`);
+            $tr.append( `<td><button data-id="${task.id}" data-status="${task.Status}" class="delete-btn btn-outline-danger">Delete</button></td>`);
 
         $( '#taskList' ).append( $tr );
 
