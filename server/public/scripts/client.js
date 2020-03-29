@@ -4,7 +4,7 @@ $( document ).ready( readyNow );
 
 function readyNow() {
     console.log( 'jQuery ready' );
-    
+
     clickListeners();
 
     // need to get tasks in database on page startup/refresh
@@ -19,7 +19,6 @@ function clickListeners() {
     $( '#add-btn' ).on( 'click', getTask );
     $( '#taskList' ).on( 'click', '.complete-btn', completeTask );
     $( '#taskList' ).on( 'click', '.delete-btn', deleteTask );
-
 }; //end clickListeners
 
 // function to delete task
@@ -29,21 +28,25 @@ function deleteTask( event ) {
 
     // get id of task from data of delete button clicked
     let id = $(this).data().id;
-
     // ajax DELETE request to server with id encoded in url
-    $.ajax({
-        type: 'DELETE',
-        url: `/tasks/${id}`
+    $( '#myModal' ).on( 'click', '#confirm-btn', function( event ){
+        if( $(this).text() === 'Delete' ){ 
+            $.ajax({
+                type: 'DELETE',
+                url: `/tasks/${id}`
+            })
+            .then( (result) => {
+                console.log( 'Successfully deleted task from database', result );
+                // call getTasks to update DOM
+                getTasks();
+            })
+            .catch( (error) => {
+                console.log( 'Error deleting task', error );
+                alert( `Couldn't delete task. See console for details.`, error );
+            });
+        }
     })
-    .then( (result) => {
-        console.log( 'Successfully deleted task from database', result );
-        // call getTasks to update DOM
-        getTasks();
-    })
-    .catch( (error) => {
-        console.log( 'Error deleting task', error );
-        alert( `Couldn't delete task. See console for details.`, error );
-    });
+
 }; // end deleteTask
 
 // function to change task status to complete
@@ -165,7 +168,7 @@ function renderTasks( toDoList ) {
         else {
             $tr.append( `<td></td>`);
         }
-            $tr.append( `<td><button data-id="${task.id}" data-status="${task.Status}" class="delete-btn btn-outline-danger">Delete</button></td>`);
+            $tr.append( `<td><a href="#myModal" data-toggle="modal"><button data-id="${task.id}" data-status="${task.Status}" class="delete-btn btn-outline-danger">Delete</button></a></td>`);
 
         $( '#taskList' ).append( $tr );
 
