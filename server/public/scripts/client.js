@@ -175,10 +175,6 @@ function renderTasks( toDoList ) {
             $tr.append( `<td><a href="#myModal" data-toggle="modal"><button data-id="${task.id}" data-status="${task.Status}" class="delete-btn btn-outline-danger">Delete</button></a></td>`);
 
         $( '#taskList' ).append( $tr );
-
-        // call function to change style based on status of task
-        styleTable();
-
     };
 
 }; //End renderTask
@@ -192,15 +188,3 @@ function convertBoolean( statusBoolean ){
         return 'Not Complete';
     }
 }; // end convertBoolean
-
-function styleTable() {
-    // loop over table on DOM and apply complete status if complete
-    $( '#taskList tr' ).each( function() {
-        if( $(this).data().task.Status === true ){
-            $(this).addClass( 'complete' );
-        }
-        else {
-            $(this).removeClass( 'complete' )
-        }
-    })
-};//end styleTable
