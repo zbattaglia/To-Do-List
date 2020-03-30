@@ -6,6 +6,8 @@ _Duration: 3 Days_
 
 This project was to create a to do list application to track tasks. The purpose was to gain a better underatanding of HTML, CSS, how to set up a server and link to a database, and create database queries from the client side.
 
+To see the fully functional site, please visit: [DEPLOYED VERSION OF APP](https://weekend-sql-todolist.herokuapp.com/)
+
 ## Screen Shot
 
 ![Main Application View](pictures/MainView.png "Example To Do List")
@@ -32,6 +34,8 @@ Link to software that is required to install the app (e.g. node).
 2. To add a task provide a name and brief description and click the `Add Task` button. The new task will appear at the bottom of the list.
 3. When a task is finished, click the `Complete` button next to the task and it will be checked off the list.
 4. To remove a task from the list click the `Delete` button. A window will open requesting confirmation. Click the `Delete` button to confirm or `Cancel` to go back to the list. (Note: a delete can't be undone)
+
+
 
 ## Built With
 
