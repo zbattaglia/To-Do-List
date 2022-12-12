@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/zbattaglia/weekend-sql-to-do-list#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "pg": "^7.18.2",
     "sweetalert": "^2.1.2"
   }
